@@ -24,42 +24,72 @@ Este projeto é uma aplicação Spring Boot que gerencia veículos e motoristas.
    cd trabalho_final
 
    Endpoints da API
-###Veiculo
-##Listar Todos os Veículos:
- - GET /veiculo: Lista todos os veículos cadastrados.
-##Buscar Veículo por ID:
- - GET /veiculo/{id}: Busca um veículo pelo ID.
-##Buscar Veículos por Marca:
- - GET /veiculo/marca/{marca}: Lista veículos por marca.
-##Buscar Veículo por Placa:
- - GET /veiculo/placa/{placa}: Busca um veículo pela placa.
-##Buscar Veículos por Ano de Fabricação:
- - GET /veiculo/ano/{ano}: Lista veículos por ano de fabricação.
-##Cadastrar um Novo Veículo:
- - POST /veiculo: Cadastra um novo veículo.
-##Atualizar um Veículo Existente:
- - PUT /veiculo/{id}: Atualiza os dados de um veículo existente.
-##Excluir um Veículo:
- - DELETE /veiculo/{id}: Exclui um veículo pelo ID.
-###Motorista
-##Listar Todos os Motoristas:
- - GET /motorista: Lista todos os motoristas cadastrados.
-##Buscar Motorista por ID:
- - GET /motorista/{id}: Busca um motorista pelo ID.
-##Buscar Motoristas por Nome:
- - GET /motorista/nome/{nome}: Lista motoristas por nome.
-##Cadastrar um Novo Motorista:
- - POST /motorista: Cadastra um novo motorista.
-##Atualizar um Motorista Existente:
- - PUT /motorista/{id}: Atualiza os dados de um motorista existente.
-##Excluir um Motorista:
- - DELETE /motorista/{id}: Exclui um motorista pelo ID.
-###Exemplo de Uso
-##Cadastrar um Veículo
-POST localhost:8080/veiculo
-Content-Type: application/json
+### Veiculo <br>
 
-``` {
+## Listar Todos os Veículos:<br>
+
+ - GET /veiculo: Lista todos os veículos cadastrados.<br>
+ 
+## Buscar Veículo por ID:<br>
+
+ - GET /veiculo/{id}: Busca um veículo pelo ID.<br>
+ - 
+##Buscar Veículos por Marca:<br>
+
+ - GET /veiculo/marca/{marca}: Lista veículos por marca.<br>
+## Buscar Veículo por Placa:<br>
+
+ - GET /veiculo/placa/{placa}: Busca um veículo pela placa.<br>
+ 
+## Buscar Veículos por Ano de Fabricação:<br>
+
+ - GET /veiculo/ano/{ano}: Lista veículos por ano de fabricação.<br>
+ 
+## Cadastrar um Novo Veículo:<br>
+
+ - POST /veiculo: Cadastra um novo veículo.<br>
+ 
+## Atualizar um Veículo Existente:<br>
+
+ - PUT /veiculo/{id}: Atualiza os dados de um veículo existente.<br>
+ 
+## Excluir um Veículo:<br>
+
+ - DELETE /veiculo/{id}: Exclui um veículo pelo ID.<br>
+ 
+### Motorista<br>
+
+## Listar Todos os Motoristas:<br>
+
+ - GET /motorista: Lista todos os motoristas cadastrados.<br>
+ 
+## Buscar Motorista por ID:<br>
+
+ - GET /motorista/{id}: Busca um motorista pelo ID.<br>
+ 
+## Buscar Motoristas por Nome:<br>
+
+ - GET /motorista/nome/{nome}: Lista motoristas por nome.<br>
+ 
+## Cadastrar um Novo Motorista:<br>
+
+ - POST /motorista: Cadastra um novo motorista.<br>
+ 
+## Atualizar um Motorista Existente:<br>
+
+ - PUT /motorista/{id}: Atualiza os dados de um motorista existente.<br>
+ 
+## Excluir um Motorista:<br>
+
+ - DELETE /motorista/{id}: Exclui um motorista pelo ID.<br>
+ 
+### Exemplo de Uso<br>
+
+## Cadastrar um Veículo<br>
+
+
+```
+{
   "marca": "Ford",
   "placa": "ABC1234",
   "anoFabricacao": 2020,
@@ -67,7 +97,7 @@ Content-Type: application/json
 }
  ```
 
-##Buscar Veículo por Placa
+## Buscar Veículo por Placa<br>
 
 ``` 
 {
@@ -82,7 +112,7 @@ Content-Type: application/json
 }
  ```
 
-##Cadastrar um Novo Motorista
+## Cadastrar um Novo Motorista<br>
 
 ``` 
 {
@@ -91,4 +121,4 @@ Content-Type: application/json
 }
  ```
 
-##Este README.md fornece uma visão geral do projeto, instruções de configuração e uso, e detalhes sobre os endpoints da API. Certifique-se de ajustar quaisquer informações específicas do seu projeto, como o link do repositório e detalhes adicionais que possam ser relevantes.
+## Este README.md fornece uma visão geral do projeto, instruções de configuração e uso, e detalhes sobre os endpoints da API. Certifique-se de ajustar quaisquer informações específicas do seu projeto, como o link do repositório e detalhes adicionais que possam ser relevantes.
