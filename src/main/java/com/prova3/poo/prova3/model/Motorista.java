@@ -16,7 +16,7 @@ public class Motorista {
 	private Integer id;
 	
 	@Column
-	@NotNull(message = "Nome não pode ser nulo \n")
+	@NotNull(message = "nome não pode ser nulo \n")
 	private String nome;
 	
 	@Column

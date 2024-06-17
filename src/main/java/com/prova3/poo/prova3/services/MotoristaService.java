@@ -38,5 +38,9 @@ public class MotoristaService {
 	public List<Motorista> buscaPorNome(String nome) {
 		return motoristarepository.findByNome(nome);
 	}
+	
+	public List<Motorista> buscaPorCpf(String cpf) {
+		return motoristarepository.findByCpf(cpf);
+	}
 
 }

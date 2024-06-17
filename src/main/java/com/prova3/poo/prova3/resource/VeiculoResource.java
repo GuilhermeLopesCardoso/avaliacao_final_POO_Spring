@@ -45,10 +45,14 @@ public class VeiculoResource {
 	@PostMapping
 	public String cadastra(@Valid @RequestBody Veiculo v) {
 		try {
-			veiculoservice.insereVeiculo(v);
-			return "Veiculo cadastrado com sucesso";
+			if(!veiculoservice.buscaPorPlaca(v.getPlacavei()).isEmpty()) {
+				return "Já existe um veículo cadastrado com essa placa";
+			} else {
+				veiculoservice.insereVeiculo(v);
+				return "Veículo cadastrado com sucesso";
+			}
 		} catch (ConstraintViolationException e) {
-			return "Veiculo não pode ser cadastrado";
+			return "Veículo não pode ser cadastrado";
 		}
 	}
 	
@@ -57,7 +61,7 @@ public class VeiculoResource {
 		try {
 			Veiculo antigo = veiculoservice.buscaPorCodigo(id);            
 			if(antigo == null) {
-                return "Não existe um Veiculo com esse código";
+                return "Não existe um veículo com esse código";
             } else {
             	if (v.getMarcavei()!=null) {
                     antigo.setMarcavei(v.getMarcavei());
@@ -85,7 +89,7 @@ public class VeiculoResource {
 		try {
 			Veiculo veiculo = veiculoservice.buscaPorCodigo(id);
 			if(veiculo == null) {
-				return "Não existe veiculo cadastrado com esse código";
+				return "Não existe nenhum veículo cadastrado com esse código";
 			}else {
 				return veiculo.toString();
 			}
@@ -99,7 +103,7 @@ public class VeiculoResource {
 		try {
 			Veiculo veiculo = veiculoservice.buscaPorCodigo(id);
 			if(veiculo == null) {
-				return "Não existe nenhum veiculo cadastrado com esse código";
+				return "Não existe nenhum veículo cadastrado com esse código";
 			}else {
 				veiculoservice.excluiVeiculo(veiculo);
 				return "Veiculo excluído com sucesso" ;
@@ -112,7 +116,7 @@ public class VeiculoResource {
 	public String buscaPorMarca(@PathVariable String marcavei) {
 		List<Veiculo> veiculos = veiculoservice.buscaPorMarca(marcavei);
 		if (veiculos.isEmpty()) {
-			return "Não existem veiculos cadastrados com essa marca";
+			return "Não existem veículos cadastrados com essa marca";
 		}else {
 			return veiculos.stream().map(Veiculo::toString).collect(Collectors.joining(""));
 		}
@@ -121,8 +125,18 @@ public class VeiculoResource {
 	public String buscarPorAno(@PathVariable Integer anofab) {
 		List<Veiculo> veiculos = veiculoservice.buscaPorAno(anofab);
 		if (veiculos.isEmpty()) {
-			return "Não existem veiculos cadastrados com esse ano de fabricação";
+			return "Não existem veículos cadastrados com esse ano de fabricação";
 		}else {
+			return veiculos.stream().map(Veiculo::toString).collect(Collectors.joining(""));
+		}
+	}
+	
+	@GetMapping("/placa/{placavei}")
+	public String buscaPorPlaca(@PathVariable String placavei) {
+		List<Veiculo> veiculos = veiculoservice.buscaPorPlaca(placavei);
+		if(veiculos.isEmpty()) {
+			return "Não existe nenhum veículo cadastrado com essa placa";
+		} else {
 			return veiculos.stream().map(Veiculo::toString).collect(Collectors.joining(""));
 		}
 	}

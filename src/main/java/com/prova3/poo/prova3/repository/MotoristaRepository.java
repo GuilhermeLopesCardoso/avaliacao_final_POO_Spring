@@ -10,4 +10,6 @@ public interface MotoristaRepository extends JpaRepository<Motorista, Integer>{
 
 	public List<Motorista> findByNome(String nome);
 	
+	public List<Motorista> findByCpf(String cpf);
+	
 }

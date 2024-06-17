@@ -55,12 +55,16 @@ public class MotoristaResource {
 	
 	@PostMapping
 	public String cadastra(@RequestBody Motorista m) {
+		
 		try {
-			motoristaservice.insereMotorista(m);
-			return "Motorista cadastrado com sucesso!";
+			if (!motoristaservice.buscaPorCpf(m.getCpf()).isEmpty()) {
+				return "Já existe um Motorista cadastrado com esse CPF, você pode alterá-lo, ou deletar e cadastrá-lo novamente.";
+			} else {
+				motoristaservice.insereMotorista(m);
+			}
 		} catch (ConstraintViolationException e) {
 			return "Motorista não cadastrado pois " + e.getMessage();
-		} 
+		} return "Motorista cadastrado com sucesso. \n\n" + m.toString();
 	}
 	
 	@GetMapping("/nome/{nome}")
@@ -73,6 +77,17 @@ public class MotoristaResource {
 				return motorista.stream().map(Motorista::toString).collect(Collectors.joining(""));
 			}
 			
+	}
+	
+	@GetMapping("/cpf/{cpf}")
+	public String buscaPorCpf(@PathVariable String cpf) {
+		
+		List<Motorista> motorista = motoristaservice.buscaPorCpf(cpf);
+		if(motorista.isEmpty()) {
+			return "Não existe um cpf cadastrado com esse número";
+		} else {
+			return motorista.stream().map(Motorista::toString).collect(Collectors.joining(""));
+		}
 	}
 	
 	@DeleteMapping("/id/{id}")

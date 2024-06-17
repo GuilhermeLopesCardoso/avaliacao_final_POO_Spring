@@ -43,8 +43,13 @@ public class VeiculoService {
 		return veiculorepository.findByAnofab(anofab);
 	}
 	
+	public List<Veiculo> buscaPorPlaca(String placavei) {
+		return veiculorepository.findByPlacavei(placavei);
+	}
+	
 	public List<Veiculo> buscaPorMotorista(Motorista motorista) {
 		return veiculorepository.findByMotorista(motorista);
 	}
+	
 	
 }
